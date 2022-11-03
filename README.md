@@ -80,6 +80,10 @@ The available prefixes is
 -   `edge-main`
 -   `edge-testing`
 -   `edge-community`
+-   `v317`
+-   `v317community`
+-   `v316`
+-   `v316community`
 -   `v315`
 -   `v315community`
 -   `v314`

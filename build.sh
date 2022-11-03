@@ -21,8 +21,8 @@ esac
 done
 
 cat << 'EOF' > /etc/apk/repositories
-http://dl-cdn.alpinelinux.org/alpine/v3.15/main
-http://dl-cdn.alpinelinux.org/alpine/v3.15/community
+http://dl-cdn.alpinelinux.org/alpine/v3.16/main
+http://dl-cdn.alpinelinux.org/alpine/v3.16/community
 @testing      http://dl-cdn.alpinelinux.org/alpine/edge/testing
 @main         http://dl-cdn.alpinelinux.org/alpine/edge/main
 @community    http://dl-cdn.alpinelinux.org/alpine/edge/community
@@ -61,6 +61,10 @@ http://dl-cdn.alpinelinux.org/alpine/v3.15/community
 @v314community http://dl-cdn.alpinelinux.org/alpine/v3.14/community
 @v315          http://dl-cdn.alpinelinux.org/alpine/v3.15/main
 @v315community http://dl-cdn.alpinelinux.org/alpine/v3.15/community
+@v316          http://dl-cdn.alpinelinux.org/alpine/v3.16/main
+@v316community http://dl-cdn.alpinelinux.org/alpine/v3.16/community
+@v317          http://dl-cdn.alpinelinux.org/alpine/v3.17/main
+@v317community http://dl-cdn.alpinelinux.org/alpine/v3.17/community
 EOF
 
 apk --repositories-file /etc/apk/repositories --update --allow-untrusted \

@@ -3,9 +3,9 @@ services:
   - docker
 env:
   global:
-    - VERSION=1.9.10
+    - VERSION=1.10.0
     - IMAGE=imega/base-builder
-    - ALPINE_VERSION=3.16.2
+    - ALPINE_VERSION=3.17.4
 
 stages:
   - Test

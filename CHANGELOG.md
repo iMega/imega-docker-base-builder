@@ -1,3 +1,8 @@
+### [1.10.0]
+
+-   Update alpine version 3.17.4
+-   Optimize url-repos loader
+
 ### [1.9.10]
 
 -   Update alpine version 3.16.2

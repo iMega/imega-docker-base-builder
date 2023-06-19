@@ -25,16 +25,20 @@ release: login build
 	@docker push $(IMAGE):latest-$(ARCH)
 
 release-manifest: login
-	docker manifest create $(IMAGE):$(TAG) \
+	@docker manifest create $(IMAGE):$(TAG) \
 		$(IMAGE):$(TAG)-amd64 \
 		$(IMAGE):$(TAG)-ppc64le \
 		$(IMAGE):$(TAG)-arm64
-	docker manifest create $(IMAGE):latest \
+	@docker manifest create $(IMAGE):latest \
 		$(IMAGE):latest-amd64 \
 		$(IMAGE):latest-ppc64le \
 		$(IMAGE):latest-arm64
-	docker manifest push $(IMAGE):$(TAG)
-	docker manifest push $(IMAGE):latest
+	@docker manifest push $(IMAGE):$(TAG)
+	@docker manifest push $(IMAGE):latest
 
 test: build
-	$(MAKE) test -C tests IMAGE=$(IMAGE) TAG=$(TAG)
+	@docker run --rm $(IMAGE):$(TAG)-$(ARCH) \
+		--packages="wrong-pkg-name" || exit 0
+	@docker run --rm $(IMAGE):$(TAG)-$(ARCH) \
+		--dev-packages="wrong-pkg-name" || exit 0
+	@$(MAKE) test -C tests IMAGE=$(IMAGE) TAG=$(TAG)

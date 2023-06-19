@@ -14,12 +14,10 @@ build: build-fs
 	@docker build -t imega/tidy .
 
 build-fs:
-	@docker run --rm=false \
-		-v $(CURDIR)/build:/build \
-		$(IMAGE):$(TAG)-$(ARCH) \
+	@docker run --rm -v $(CURDIR)/build:/build $(IMAGE):$(TAG)-$(ARCH) \
 		--packages="tidyhtml"
 
 test: build
-	@echo "<hTmL></hTmL>" | docker run --rm=false -i imega/tidy -xml -iqu | grep "<HTML></HTML>"
+	@echo "<hTmL></hTmL>" | docker run --rm -i imega/tidy -xml -iqu | grep "<HTML></HTML>"
 
 .PHONY: build
